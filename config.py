@@ -99,7 +99,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus="#5f1f5f", border_focus_stack=["#5f1f5f", "#3c133c"], border_normal="#3c133c", border_width=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -127,7 +127,7 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(this_current_screen_border="#5f1f5f"),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -148,10 +148,11 @@ screens = [
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background="#0f0b15"
         ),
-        background="#000000",
-        wallpaper=logo,
-        wallpaper_mode="center",
+        # background="#000000",
+        # wallpaper=logo,
+        # wallpaper_mode="center",
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
