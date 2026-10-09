@@ -18,17 +18,42 @@ keys = [
     Key([super_key], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([super_key], "j", lazy.layout.down(), desc="Move focus down"),
     Key([super_key], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([super_key], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key(
+        [super_key],
+        "space",
+        lazy.layout.next(),
+        desc="Move window focus to other window",
+    ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([super_key, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([super_key, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [super_key, "shift"],
+        "h",
+        lazy.layout.shuffle_left(),
+        desc="Move window to the left",
+    ),
+    Key(
+        [super_key, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([super_key, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([super_key, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([super_key, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([super_key, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [super_key, "control"],
+        "h",
+        lazy.layout.grow_left(),
+        desc="Grow window to the left",
+    ),
+    Key(
+        [super_key, "control"],
+        "l",
+        lazy.layout.grow_right(),
+        desc="Grow window to the right",
+    ),
     Key([super_key, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([super_key, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([super_key], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -52,10 +77,17 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
-    Key([super_key], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key(
+        [super_key],
+        "t",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating on the focused window",
+    ),
     Key([super_key, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([super_key, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([super_key], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key(
+        [super_key], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"
+    ),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -99,7 +131,12 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus="#5f1f5f", border_focus_stack=["#5f1f5f", "#3c133c"], border_normal="#3c133c", border_width=4),
+    layout.Columns(
+        border_focus="#5f1f5f",
+        border_focus_stack=["#5f1f5f", "#3c133c"],
+        border_normal="#3c133c",
+        border_width=4,
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -148,7 +185,7 @@ screens = [
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            background="#0f0b15"
+            background="#0f0b15",
         ),
         # background="#000000",
         # wallpaper=logo,
@@ -172,8 +209,18 @@ generate_screens: Callable[[list[Output]], list[Screen]] | None = None
 
 # Drag floating layouts.
 mouse = [
-    Drag([super_key], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([super_key], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [super_key],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [super_key],
+        "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size(),
+    ),
     Click([super_key], "Button2", lazy.window.bring_to_front()),
 ]
 
